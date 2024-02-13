@@ -58,6 +58,14 @@ function divide(a, b) {
 
 function operate(operator, a, b) {
     
+    const mathFunctions = {
+        '+': add,
+        '-': subtract,
+        '*': multiply,
+        '/': divide,
+    };
+
+    return mathFunctions[operator](a, b);
 }
 
 
