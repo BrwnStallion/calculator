@@ -13,6 +13,7 @@
     - Calls the appropriate calculation function (based on the input)
     - Can use an object to store functions under their operator's key
     - Can separate operator and operands into variables, then call the key-val
+    - Operator needs to be a string. Needs to be passed to function as string
 - Inputs from the HTML
     - Number input from the calculator stored as operands
         - Operands stored on operator keypress event
