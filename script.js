@@ -11,15 +11,26 @@
     - Have variable for each component; will be displayed on the calculator
 - Operate function
     - Calls the appropriate calculation function (based on the input)
+    - Can use an object to store functions under their operator's key
+    - Can separate operator and operands into variables, then call the key-val
 - Inputs from the HTML
-    - Number input from the calculator stored as arguments
+    - Number input from the calculator stored as operands
+        - Operands stored on operator keypress event
+- Function
+    - Store operand
     - Store the operator
-    - Operate when '=' is pressed
+        - Allow operator to be changed
+            - Show selected operator button as toggled
+    - Operate when:
+        - '=' is pressed
+        - Subsequent operator is pressed of lower priority:
+            - 5 * 2 +(operate 5*2)) 3
 - Order of operations
     - Automatically calculate previoius subtotal once a new operator is pressed
+      of lower priority than previous operator
     - Operate multiplication/division before addition/subtraction
-        - If multiplication is pressed, do current current operation before 
-          doing addition/subtraction
+        - i.e., If multiplication is pressed, do current current operation before 
+          doing prior addition/subtraction
 
 
 */
@@ -41,7 +52,12 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    return (b !== 0) ? +a / +b : 'What do you think you\'re doing?!?';
+    return (+b !== 0) ? +a / +b : 'What do you think you\'re doing?!?';
+}
+
+
+function operate(operator, a, b) {
+    
 }
 
 
