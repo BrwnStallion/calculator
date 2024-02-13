@@ -17,6 +17,13 @@
 - Inputs from the HTML
     - Number input from the calculator stored as operands
         - Operands stored on operator keypress event
+    - Key functionality
+        - [ESC] is same as clear
+        - [Backspace] is same as undo
+        - [Enter] is same as equals
+        - [*], [/], [+], [-] are same as clicking various operations
+        - Letter characters should do nothing
+        - Number characters should be same as clicking the numbers
 - Function
     - Store operand
     - Store the operator
