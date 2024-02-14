@@ -31,8 +31,8 @@
             - Show selected operator button as toggled
     - Operate when:
         - '=' is pressed
-        - Subsequent operator is pressed of lower priority:
-            - 5 * 2 +(operate 5*2)) 3
+        - Subsequent operator is pressed if lower priority:
+            - 5 * 2 +(operate 5*2) 3
 - Order of operations
     - Automatically calculate previoius subtotal once a new operator is pressed
       of lower priority than previous operator
