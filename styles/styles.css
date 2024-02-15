@@ -20,7 +20,6 @@ body {
     display: flex;
     flex-direction: column;
     touch-action: none;
-    /* justify-content: center; */
     align-items: center;
 }
 
@@ -73,28 +72,16 @@ body {
 }
 
 #row-5 #clear,
-#row-5 #undo {
-    flex-grow: 1;
-}
-
-#row-5 #divide {
-    /* flex-grow: 1; */
-    min-width: 25%;
-}
-
-#row-4 button,
-#row-3 button, 
-#row-2 button {
-    flex-grow: 1;
-    min-width: 25%;
-}
-
-#row-1 #decimal,
-#row-1 #equals {
-    /* flex-grow: 1; */
-    min-width: 25%;
-}
-
+#row-5 #undo,
 #row-1 #zero {
     flex-grow: 1;
+}
+
+#row-5 #divide,
+#row-4 button,
+#row-3 button, 
+#row-2 button,
+#row-1 #decimal,
+#row-1 #equals {
+    min-width: 25%;
 }
