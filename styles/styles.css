@@ -28,7 +28,8 @@ body {
     display: flex;
     justify-content: center;
     /* Temporary styles */
-    background-color: orange;
+    background-color: black;
+    color: white;
 }
 
 #calculator-container {
@@ -73,6 +74,8 @@ body {
     justify-content: center;
     /* Center btn text vertically */
     align-items: center;
+    color: white;
+    background-color: black;
 }
 
 #row-5 #clear,
