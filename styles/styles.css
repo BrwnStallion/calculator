@@ -24,19 +24,21 @@ body {
 }
 
 #header {
-    background-color: orange;
     width: 100%;
     display: flex;
     justify-content: center;
+    /* Temporary styles */
+    background-color: orange;
 }
 
 #calculator-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: green;
     flex-grow: 1;
     min-width: 100%;
+    /* Temporary styles */
+    background-color: black;
 }
 
 #calculator {
@@ -44,7 +46,6 @@ body {
     flex-direction: column;
     min-height: 40vh;
     min-width: 30vh;
-    border: 2px solid black;
 }
 
 #display {
@@ -53,21 +54,24 @@ body {
 }
 
 #buttons {
-    border: 1px solid red;
     display: flex;
     flex-direction: column;
     flex-grow: 7;
+    /* Gap between btn rows */
     gap: 5px;
 }
 
 #buttons div {
     flex-grow: 1;
-    border: 2px solid rgb(67, 173, 235);
+    display: flex;
+    gap: 2%;
 }
 
-#buttons * {
+#buttons button {
     display: flex;
+    /* Center btn text horizontally */
     justify-content: center;
+    /* Center btn text vertically */
     align-items: center;
 }
 
@@ -83,5 +87,6 @@ body {
 #row-2 button,
 #row-1 #decimal,
 #row-1 #equals {
-    min-width: 25%;
+    /* 1/4 of available space (gap) */
+    min-width: 23.5%;
 }
