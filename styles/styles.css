@@ -31,6 +31,15 @@ body {
     justify-content: center;
 }
 
+#calculator-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: green;
+    flex-grow: 1;
+    min-width: 100%;
+}
+
 #calculator {
     display: flex;
     
