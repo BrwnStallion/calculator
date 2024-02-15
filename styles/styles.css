@@ -20,10 +20,18 @@ body {
     display: flex;
     flex-direction: column;
     touch-action: none;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
 }
 
 #header {
-    align-self: center;
+    background-color: orange;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#calculator {
+    display: flex;
+    
 }
