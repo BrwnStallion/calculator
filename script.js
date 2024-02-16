@@ -76,6 +76,16 @@ function operate(operator, a, b) {
     return mathFunctions[operator](a, b);
 }
 
+function clearDisplayValue() {
+    const display = document.querySelector('#display');
+    display.textContent = '';
+}
+
+function setDisplayValue(value) {
+    const display = document.querySelector('#display');
+    display.textContent = +value;
+}
+
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Execution ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
