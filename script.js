@@ -93,6 +93,11 @@ function backspace() {
         .slice(0, display.textContent.length - 1);
 }
 
+function changeSign() {
+    const display = document.querySelector('#display');
+    display.textContent = +display.textContent * (-1);
+}
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Execution ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Testing ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
