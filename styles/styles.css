@@ -91,15 +91,8 @@ body {
     font-size: 24px;
 }
 
-#row-1 #zero {
-    min-width: 48%;
-}
-
-
-#row-1 #decimal,
-#row-1 #equals {
-    /* 1/4 of available space (gap) */
-    min-width: 24%;
+#row-5 #undo {
+    font-size: 20px;
 }
 
 #row-5 #clear,
@@ -111,4 +104,14 @@ body {
 #row-2 button {
     /* 1/4 of available space (gap) */
     min-width: 23.5%;
+}
+
+#row-1 #zero {
+    min-width: 48%;
+}
+
+#row-1 #decimal,
+#row-1 #equals {
+    /* 1/4 of available space (gap) */
+    min-width: 24%;
 }
