@@ -76,14 +76,14 @@ function operate(operator, a, b) {
     return mathFunctions[operator](a, b);
 }
 
-function clearDisplayValue() {
+function clearDisplay() {
     const display = document.querySelector('#display');
     display.textContent = '';
 }
 
-function setDisplayValue(value) {
+function appendDisplay(value) {
     const display = document.querySelector('#display');
-    display.textContent = +value;
+    display.textContent += +value;
 }
 
 
