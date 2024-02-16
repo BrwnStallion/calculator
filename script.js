@@ -86,6 +86,12 @@ function appendDisplay(value) {
     display.textContent += +value;
 }
 
+function backspace() {
+    const display = document.querySelector('#display');
+    display.textContent = display
+        .textContent
+        .slice(0, display.textContent.length - 1);
+}
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Execution ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
