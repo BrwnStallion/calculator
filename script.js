@@ -102,6 +102,14 @@ function appendArray(element, array) {
     array.push(element);
 }
 
+function removeLastElement(array) {
+    array.splice(array.length - 1, 1);
+}
+
+function removePenultElement(array) {
+    array.splice(array.length - 2, 1);
+}
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Execution ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Testing ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
