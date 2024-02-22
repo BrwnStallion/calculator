@@ -98,6 +98,19 @@ function changeSign() {
     display.textContent = +display.textContent * (-1);
 }
 
+function appendArray(element, array) {
+    array.push(element);
+}
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Execution ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Testing ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+const lowArgs = [];
+const highArgs = [];
+const calcArgs = {
+    addSubtract: [],
+    multiplyDivide: [],
+};
+
+const operations = [];
