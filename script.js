@@ -63,7 +63,6 @@ function divide(a, b) {
     return (+b !== 0) ? +a / +b : 'What do you think you\'re doing?!?';
 }
 
-
 function operate(operator, a, b) {
     
     const mathFunctions = {
