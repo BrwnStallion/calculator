@@ -93,6 +93,12 @@ function backspace() {
         .slice(0, display.textContent.length - 1);
 }
 
+function clearAll(...arrays) {
+    arrays.forEach( (arrayArg) => {
+        arrayArg.length = 0;
+    });
+}
+
 function changeSign() {
     const display = document.querySelector('#display');
     display.textContent = +display.textContent * (-1);
@@ -114,6 +120,7 @@ function replaceWithResult(result, array) {
     array[0] = result;
 }
 
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Execution ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Testing ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -121,8 +128,8 @@ function replaceWithResult(result, array) {
 const lowArgs = [];
 const highArgs = [];
 const calcArgs = {
-    addSubtract: [],
-    multiplyDivide: [],
+    addSubtract: [2, 3],
+    multiplyDivide: [2, 8],
 };
 
-const operations = [];
+const operations = ['+', '+'];
