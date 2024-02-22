@@ -110,6 +110,10 @@ function removePenultElement(array) {
     array.splice(array.length - 2, 1);
 }
 
+function replaceWithResult(result, array) {
+    array[0] = result;
+}
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Execution ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Testing ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
