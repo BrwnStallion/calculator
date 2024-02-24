@@ -115,8 +115,8 @@ function removePenultElement(array) {
     array.splice(array.length - 2, 1);
 }
 
-function replaceWithResult(result, array) {
-    array[0] = result;
+function replaceWithResult(result, array, element) {
+    array[element] = result;
 }
 
 
@@ -132,3 +132,29 @@ const calcArgs = {
 };
 
 const operations = ['+', '+'];
+
+const equation = [2, '+', 3, '*', 2, '*'];
+
+const operatePriority = [1, 2, 2];
+
+let priorityDifference = operatePriority[operatePriority.length - 1] -
+    operatePriority[operatePriority.length - 2];
+
+if (priorityDifference > 0) {
+    // Do nothing
+} else if (priorityDifference === 0) {
+    // Same priority; operate
+    let b = equation[equation.length - 2];
+    removePenultElement(equation);
+    let operator = equation[equation.length - 2];
+    removePenultElement(equation);
+    let a = equation[equation.length - 2];
+    let result = operate(operator, a, b);
+    replaceWithResult(result, equation, equation.length - 2);
+    
+    
+    
+
+} else if (priorityDifference < 0) {
+    
+};
