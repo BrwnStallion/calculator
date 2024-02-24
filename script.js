@@ -133,9 +133,9 @@ const calcArgs = {
 
 const operations = ['+', '+'];
 
-const equation = [2, '+', 3, '*', 2, '*'];
+const equation = [2, '+', 3, '*', 2, '+'];
 
-const operatePriority = [1, 2, 2];
+const operatePriority = [1, 2, 1];
 
 let priorityDifference = operatePriority[operatePriority.length - 1] -
     operatePriority[operatePriority.length - 2];
@@ -156,5 +156,21 @@ if (priorityDifference > 0) {
     
 
 } else if (priorityDifference < 0) {
+    // Operate everything
+    let continueEval = true;
+    while (continueEval) {
+        
+        let b = equation[equation.length - 2];
+        removePenultElement(equation);
+        let operator = equation[equation.length - 2];
+        removePenultElement(equation);
+        let a = equation[equation.length - 2];
+        let result = operate(operator, a, b);
+        replaceWithResult(result, equation, equation.length - 2);
+
+        if (equation.length === 2) {
+            continueEval = false;
+        };
+    };
     
 };
