@@ -119,6 +119,17 @@ function replaceWithResult(result, array, element) {
     array[element] = result;
 }
 
+function evaluate(equationArr, priorityArr) {
+    let b = equationArr[equationArr.length - 2];
+    removePenultElement(equationArr);
+    let operator = equationArr[equationArr.length - 2];
+    removePenultElement(equationArr);
+    let a = equationArr[equationArr.length - 2];
+    let result = operate(operator, a, b);
+    replaceWithResult(result, equationArr, equationArr.length - 2);
+    
+    removePenultElement(priorityArr);
+}
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Execution ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -133,9 +144,9 @@ const calcArgs = {
 
 const operations = ['+', '+'];
 
-const equation = [2, '+', 3, '*', 2, '+'];
+const equation = [2, '*', 3, '+'];
 
-const operatePriority = [1, 2, 1];
+const operatePriority = [2, 1];
 
 let priorityDifference = operatePriority[operatePriority.length - 1] -
     operatePriority[operatePriority.length - 2];
@@ -144,30 +155,16 @@ if (priorityDifference > 0) {
     // Do nothing
 } else if (priorityDifference === 0) {
     // Same priority; operate
-    let b = equation[equation.length - 2];
-    removePenultElement(equation);
-    let operator = equation[equation.length - 2];
-    removePenultElement(equation);
-    let a = equation[equation.length - 2];
-    let result = operate(operator, a, b);
-    replaceWithResult(result, equation, equation.length - 2);
+    evaluate(equation, operatePriority);
     
-    
-    
-
 } else if (priorityDifference < 0) {
     // Operate everything
     let continueEval = true;
     while (continueEval) {
         
-        let b = equation[equation.length - 2];
-        removePenultElement(equation);
-        let operator = equation[equation.length - 2];
-        removePenultElement(equation);
-        let a = equation[equation.length - 2];
-        let result = operate(operator, a, b);
-        replaceWithResult(result, equation, equation.length - 2);
+        evaluate(equation, operatePriority);
 
+        // operate until the equation array is simplified
         if (equation.length === 2) {
             continueEval = false;
         };
