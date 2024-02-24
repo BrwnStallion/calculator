@@ -151,14 +151,19 @@ const operatePriority = [2, 1];
 let priorityDifference = operatePriority[operatePriority.length - 1] -
     operatePriority[operatePriority.length - 2];
 
+// Evaluation depends on order of operations
 if (priorityDifference > 0) {
+    
     // Do nothing
+
 } else if (priorityDifference === 0) {
-    // Same priority; operate
+    
+    // Same priority; evaluate
     evaluate(equation, operatePriority);
     
 } else if (priorityDifference < 0) {
-    // Operate everything
+    
+    // Evaluate everything
     let continueEval = true;
     while (continueEval) {
         
