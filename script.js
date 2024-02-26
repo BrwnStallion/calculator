@@ -82,7 +82,7 @@ function clearDisplay() {
 
 function appendDisplay(value) {
     const display = document.querySelector('#display');
-    display.textContent += +value;
+    display.textContent += value;
 }
 
 function backspace() {
