@@ -77,7 +77,7 @@ function operate(operator, a, b) {
 
 function clearDisplay() {
     const display = document.querySelector('#display');
-    display.textContent = '';
+    display.textContent = '0';
 }
 
 function appendDisplay(value) {
