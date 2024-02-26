@@ -82,14 +82,24 @@ function clearDisplay() {
 
 function appendDisplay(value) {
     const display = document.querySelector('#display');
-    display.textContent += value;
+    
+    // Conditions for replacing default display value of zero
+    if (display.textContent === '-0' && value !== '.') {
+        display.textContent = '-' + value;   
+    } else if (display.textContent === '0' && value !== '.') {
+        display.textContent = value;
+    } else {
+        display.textContent += value;
+    };
 }
 
 function backspace() {
     const display = document.querySelector('#display');
     
     // Conditions for final backspace (if pos or neg)
-    if (display.textContent.charAt(0) === '-' 
+    if (display.textContent === '-0') {
+        display.textContent = '0';
+    } else if (display.textContent.charAt(0) === '-' 
         && display.textContent.length === 2) {
         display.textContent = '-0';
     } else if (display.textContent.charAt(0) !== '-'
