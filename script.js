@@ -100,7 +100,11 @@ function clearAll(...arrays) {
 
 function changeSign() {
     const display = document.querySelector('#display');
-    display.textContent = +display.textContent * (-1);
+    if (display.textContent.charAt(0) === '-') {
+        display.textContent = display.textContent.slice(1);
+    } else if (display.textContent.charAt(0) !== '-') {
+        display.textContent = '-' + display.textContent.slice(0);
+    };
 }
 
 function appendArray(element, array) {
