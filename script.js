@@ -107,28 +107,40 @@ function appendArray(element, array) {
     array.push(element);
 }
 
-function removeLastElement(array) {
-    array.splice(array.length - 1, 1);
-}
-
-function removePenultElement(array) {
-    array.splice(array.length - 2, 1);
+function removeArrayElement(array, type = 'penultimate') {
+    let arrayEnd;
+    if (type === 'penultimate') {
+        arrayEnd = 2;
+    } else if (type === 'ultimate') {
+        arrayEnd = 1;
+    };
+    array.splice(array.length - arrayEnd, 1);
 }
 
 function replaceWithResult(result, array, element) {
     array[element] = result;
 }
 
-function evaluate(equationArr, priorityArr) {
-    let b = equationArr[equationArr.length - 2];
-    removePenultElement(equationArr);
-    let operator = equationArr[equationArr.length - 2];
-    removePenultElement(equationArr);
-    let a = equationArr[equationArr.length - 2];
+function evaluate(equationArr, priorityArr, type = 'operator') {
+    let arrayEnd;
+    let removeElementLocation;
+    if (type === 'operator') {
+        arrayEnd = 2;
+        removeElementLocation = 'penultimate';
+    } else if (type === 'equals') {
+        arrayEnd = 1;
+        removeElementLocation = 'ultimate';
+    };
+
+    let b = equationArr[equationArr.length - arrayEnd];
+    removeArrayElement(equationArr, removeElementLocation);
+    let operator = equationArr[equationArr.length - arrayEnd];
+    removeArrayElement(equationArr, removeElementLocation);
+    let a = equationArr[equationArr.length - arrayEnd];
     let result = operate(operator, a, b);
-    replaceWithResult(result, equationArr, equationArr.length - 2);
+    replaceWithResult(result, equationArr, equationArr.length - arrayEnd);
     
-    removePenultElement(priorityArr);
+    removeArrayElement(priorityArr, removeElementLocation);
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Execution ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -144,9 +156,15 @@ const calcArgs = {
 
 const operations = ['+', '+'];
 
-const equation = [2, '*', 3, '+'];
 
-const operatePriority = [2, 1];
+
+const equation = [2, '+', 2, '*', 3, '-'];
+
+const operatePriority = [1, 2, 1];
+
+
+// -------------- This code is for when an operator is entered -----------------
+
 
 let priorityDifference = operatePriority[operatePriority.length - 1] -
     operatePriority[operatePriority.length - 2];
@@ -159,7 +177,7 @@ if (priorityDifference > 0) {
 } else if (priorityDifference === 0) {
     
     // Same priority; evaluate
-    evaluate(equation, operatePriority);
+    evaluate(equation, operatePriority, 'operator');
     
 } else if (priorityDifference < 0) {
     
@@ -167,7 +185,7 @@ if (priorityDifference > 0) {
     let continueEval = true;
     while (continueEval) {
         
-        evaluate(equation, operatePriority);
+        evaluate(equation, operatePriority, 'operator');
 
         // operate until the equation array is simplified
         if (equation.length === 2) {
@@ -176,3 +194,18 @@ if (priorityDifference > 0) {
     };
     
 };
+
+
+// --------------- This code is for when 'equals' is entered -------------------
+/* 
+let continueEval = true;
+    while (continueEval) {
+        
+        evaluate(equation, operatePriority, 'equals');
+
+        // operate until the equation array is simplified
+        if (equation.length === 1) {
+            continueEval = false;
+        };
+    };
+ */
