@@ -157,17 +157,6 @@ addEventListener('DOMContentLoaded', () => {
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Testing ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-const lowArgs = [];
-const highArgs = [];
-const calcArgs = {
-    addSubtract: [2, 3],
-    multiplyDivide: [2, 8],
-};
-
-const operations = ['+', '+'];
-
-
-
 const equation = [2, '+', 2, '*', 3, '-'];
 
 const operatePriority = [1, 2, 1];
