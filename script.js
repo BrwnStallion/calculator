@@ -87,9 +87,19 @@ function appendDisplay(value) {
 
 function backspace() {
     const display = document.querySelector('#display');
-    display.textContent = display
-        .textContent
-        .slice(0, display.textContent.length - 1);
+    
+    // Conditions for final backspace (if pos or neg)
+    if (display.textContent.charAt(0) === '-' 
+        && display.textContent.length === 2) {
+        display.textContent = '-0';
+    } else if (display.textContent.charAt(0) !== '-'
+        && display.textContent.length === 1) {
+            display.textContent = '0';
+    } else {
+        display.textContent = display
+            .textContent
+            .slice(0, display.textContent.length - 1);
+    };
 }
 
 function clearAll(...arrays) {
