@@ -149,6 +149,12 @@ function evaluate(equationArr, priorityArr, type = 'operator') {
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Execution ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+// Set default to zero
+addEventListener('DOMContentLoaded', () => {
+    const display = document.querySelector('#display');
+    display.textContent = '0';
+});
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Testing ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 const lowArgs = [];
