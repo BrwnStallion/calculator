@@ -259,6 +259,7 @@ buttons.addEventListener('click', (e) => {
                 // Show selected operator as toggled using CSS
                 button.classList.toggle('toggled');
                 
+                // Append number, operator, and operator priority to arrays
                 appendArray(display.textContent, equation);
                 appendArray(buttonContent, equation);
                 appendPriorityArray(buttonContent,
