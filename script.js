@@ -131,6 +131,10 @@ function appendArray(element, array) {
     array.push(element);
 }
 
+function appendPriorityArray(operator, priorityArr, lookupArr) {
+    priorityArr.push(lookupArr[operator]);
+}
+
 function removeArrayElement(array, type = 'penultimate') {
     let arrayEnd;
     if (type === 'penultimate') {
@@ -188,7 +192,7 @@ const priorityLookup = {
     '-': 1,
 };
 
-let operatorJustPressed = true;
+let operatorJustPressed = false;
 
 // -------------- This code is for when an operator is entered -----------------
 
@@ -209,10 +213,22 @@ buttons.addEventListener('click', (e) => {
         case 'seven':
         case 'eight':
         case 'nine':
+        case 'decimal':
+            
+            const display = document.querySelector('#display');
+            
+            // If first character since operator was pressed, clear display
             if (operatorJustPressed) {
-                appendDisplay(buttonContent);
-                // operatorJustPressed = false;
+                clearDisplay();
             };
+            
+            // Don't append decimal if there already is one in the display
+            if (button === 'decimal' && display.textContent.includes('.')) {
+                break;
+            };
+            
+            appendDisplay(buttonContent);
+            operatorJustPressed = false;
         break;
         case 'zero':
 
@@ -223,19 +239,27 @@ buttons.addEventListener('click', (e) => {
         case 'multiply':
         case 'subtract':
         case 'add':
+            
+            // only button that doesn't reflect the correct operator character
+            if (button === 'multiply') {
+                buttonContent = '*';
+            }
+            
             if (!operatorJustPressed) {
-                appendArray(buttonContent, equation);
+                
                 operatorJustPressed = true;
+                const display = document.querySelector('#display');
+                
+                appendArray(display.textContent, equation);
+                appendArray(buttonContent, equation);
+                appendPriorityArray(buttonContent,
+                    operatePriority, priorityLookup);
+                
             };
         break;
         
         // Equals
         case 'equals':
-
-        break;
-        
-        // Decimal
-        case 'decimal':
 
         break;
 
