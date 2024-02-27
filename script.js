@@ -193,6 +193,7 @@ const priorityLookup = {
 };
 
 let operatorJustPressed = false;
+let equalsJustPressed = false;
 
 // -------------- This code is for when an operator is entered -----------------
 
@@ -276,7 +277,7 @@ buttons.addEventListener('click', (e) => {
         case 'clear':
             clearDisplay();
             clearAll(equation, operatePriority);
-            
+
             // Untoggle CSS style on the previously selected operator
             document.querySelector('.toggled').classList.toggle('toggled');
             operatorJustPressed = false;
