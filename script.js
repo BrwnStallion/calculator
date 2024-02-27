@@ -60,7 +60,12 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    return (+b !== 0) ? +a / +b : 'don\'t do that';
+    if (+b !== 0) {
+        return +a / +b;
+    } else {
+        errorThrown = true;
+        return 'don\'t do that';
+    };
 }
 
 function operate(operator, a, b) {
@@ -203,6 +208,7 @@ const priorityLookup = {
 
 let operatorJustPressed = false;
 let equalsJustPressed = false;
+let errorThrown = false;
 
 // -------------- This code is for when an operator is entered -----------------
 
@@ -229,6 +235,19 @@ buttons.addEventListener('click', (e) => {
             
             const display = document.querySelector('#display');
             
+            // If error was thrown previously (div/0); same code as 'clear'
+            if (errorThrown) {
+
+                clearDisplay();
+                clearAll(equation, operatePriority);
+
+                // Untoggle CSS style on the previously selected operator
+                untoggleOperator();
+                operatorJustPressed = false;
+                equalsJustPressed = false;
+                errorThrown = false;
+            };
+
             // If first character since operator was pressed, clear display
             if (operatorJustPressed) {
                 clearDisplay();
@@ -250,7 +269,7 @@ buttons.addEventListener('click', (e) => {
                 equalsJustPressed = false;
                 break;
             };
-
+            
             appendDisplay(buttonContent);
             operatorJustPressed = false;
             equalsJustPressed = false;
@@ -372,6 +391,7 @@ buttons.addEventListener('click', (e) => {
             untoggleOperator();
             operatorJustPressed = false;
             equalsJustPressed = false;
+            errorThrown = false;
         break;
         case 'undo':
             if (!operatorJustPressed && !equalsJustPressed) backspace();
