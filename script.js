@@ -198,10 +198,11 @@ let operatorJustPressed = false;
 
 const buttons = document.querySelector('#buttons');
 buttons.addEventListener('click', (e) => {
-    let button = e.target.id;
+    let button = e.target;
+    let buttonId = e.target.id;
     let buttonContent = e.target.textContent;
 
-    switch (button) {
+    switch (buttonId) {
         
         // Numbers
         case 'one':
@@ -219,15 +220,20 @@ buttons.addEventListener('click', (e) => {
             const display = document.querySelector('#display');
             
             // If first character since operator was pressed, clear display
-            if (operatorJustPressed) clearDisplay();
+            if (operatorJustPressed) {
+                clearDisplay();
+
+                // Untoggle CSS style on the previously selected operator
+                document.querySelector('.toggled').classList.toggle('toggled');
+            };
             
             // Don't append decimal if there already is one in the display
-            if (button === 'decimal' && display.textContent.includes('.')) {
+            if (buttonId === 'decimal' && display.textContent.includes('.')) {
                 break;
             };
             
             // Don't append zero if it violates math notation rules
-            if (button === 'zero' &&
+            if (buttonId === 'zero' &&
                 (display.textContent === '-0' || display.textContent === '0')) {
                 break;
             };
@@ -243,12 +249,15 @@ buttons.addEventListener('click', (e) => {
         case 'subtract':
             
             // only button that doesn't reflect the correct operator character
-            if (button === 'multiply') buttonContent = '*';
+            if (buttonId === 'multiply') buttonContent = '*';
             
             if (!operatorJustPressed) {
                 
                 operatorJustPressed = true;
                 const display = document.querySelector('#display');
+
+                // Show selected operator as toggled using CSS
+                button.classList.toggle('toggled');
                 
                 appendArray(display.textContent, equation);
                 appendArray(buttonContent, equation);
