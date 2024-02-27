@@ -243,9 +243,7 @@ buttons.addEventListener('click', (e) => {
         case 'subtract':
             
             // only button that doesn't reflect the correct operator character
-            if (button === 'multiply') {
-                buttonContent = '*';
-            }
+            if (button === 'multiply') buttonContent = '*';
             
             if (!operatorJustPressed) {
                 
@@ -256,7 +254,6 @@ buttons.addEventListener('click', (e) => {
                 appendArray(buttonContent, equation);
                 appendPriorityArray(buttonContent,
                     operatePriority, priorityLookup);
-                
             };
         break;
         
