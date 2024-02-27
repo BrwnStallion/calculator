@@ -310,8 +310,7 @@ buttons.addEventListener('click', (e) => {
                         // Display total/subtotal
                         display.textContent = equation[equation.length - 2];
                         
-                        console.log(equation);
-                        console.log(operatePriority);
+                        
                     } else if (priorityDifference < 0) {
                         
                         // Evaluate everything
@@ -327,8 +326,6 @@ buttons.addEventListener('click', (e) => {
                         // Display total
                         display.textContent = equation[equation.length - 2];
                         
-                        console.log(equation);
-                        console.log(operatePriority);
                     };
                 };
 
@@ -359,9 +356,7 @@ buttons.addEventListener('click', (e) => {
                     };
                 };
                 
-                console.log(equation);
-                console.log(operatePriority);
-
+                
                 // Display total
                 display.textContent = equation[equation.length - 1];
                 equalsJustPressed = true;
