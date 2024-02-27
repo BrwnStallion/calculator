@@ -397,7 +397,7 @@ buttons.addEventListener('click', (e) => {
             if (!operatorJustPressed && !equalsJustPressed) backspace();
         break;
         case 'sign':
-            changeSign();
+            if (!equalsJustPressed) changeSign();
         break;
     };
 });
