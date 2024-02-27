@@ -276,9 +276,13 @@ buttons.addEventListener('click', (e) => {
         case 'clear':
             clearDisplay();
             clearAll(equation, operatePriority);
+            
+            // Untoggle CSS style on the previously selected operator
+            document.querySelector('.toggled').classList.toggle('toggled');
+            operatorJustPressed = false;
         break;
         case 'undo':
-            backspace();
+            if (!operatorJustPressed) backspace();
         break;
         case 'sign':
             changeSign();
