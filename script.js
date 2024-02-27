@@ -60,7 +60,7 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    return (+b !== 0) ? +a / +b : 'What do you think you\'re doing?!?';
+    return (+b !== 0) ? +a / +b : 'don\'t do that';
 }
 
 function operate(operator, a, b) {
@@ -247,11 +247,13 @@ buttons.addEventListener('click', (e) => {
                 (display.textContent === '-0' || display.textContent === '0')) {
                 
                 operatorJustPressed = false;
+                equalsJustPressed = false;
                 break;
             };
 
             appendDisplay(buttonContent);
             operatorJustPressed = false;
+            equalsJustPressed = false;
         break;
         
         // Operators
@@ -265,17 +267,26 @@ buttons.addEventListener('click', (e) => {
             
             if (!operatorJustPressed) {
                 
+                
                 operatorJustPressed = true;
                 const display = document.querySelector('#display');
-
+                
+                
                 // Show selected operator as toggled using CSS
                 button.classList.toggle('toggled');
                 
+                
                 // Append number, operator, and operator priority to arrays
-                appendArray(display.textContent, equation);
+                    // Don't append if equals was just pressed. Display already
+                    // reflects the equation array
+                if (!equalsJustPressed) {
+                    appendArray(display.textContent, equation);
+                };
+
                 appendArray(buttonContent, equation);
                 appendPriorityArray(buttonContent,
                     operatePriority, priorityLookup);
+                
                 
                 // Calculate, if applicable
                 if (equation.length > 3) {
@@ -299,7 +310,8 @@ buttons.addEventListener('click', (e) => {
                         // Display total/subtotal
                         display.textContent = equation[equation.length - 2];
                         
-
+                        console.log(equation);
+                        console.log(operatePriority);
                     } else if (priorityDifference < 0) {
                         
                         // Evaluate everything
@@ -314,15 +326,46 @@ buttons.addEventListener('click', (e) => {
                         
                         // Display total
                         display.textContent = equation[equation.length - 2];
-
+                        
+                        console.log(equation);
+                        console.log(operatePriority);
                     };
                 };
+
+                // This handles the case when operating on a result
+                equalsJustPressed = false;
+
             };
         break;
         
         // Equals
         case 'equals':
+            
+            if (!equalsJustPressed && !operatorJustPressed
+                    && equation.length > 1) {
+                
+                // Append display number to equation array
+                const display = document.querySelector('#display');
+                appendArray(display.textContent, equation);
 
+                let continueEval = true;
+                while (continueEval) {
+                    
+                    evaluate(equation, operatePriority, 'equals');
+                    
+                    // operate until the equation array is simplified
+                    if (equation.length === 1) {
+                        continueEval = false;
+                    };
+                };
+                
+                console.log(equation);
+                console.log(operatePriority);
+
+                // Display total
+                display.textContent = equation[equation.length - 1];
+                equalsJustPressed = true;
+            };
         break;
 
         // Misc
@@ -333,9 +376,10 @@ buttons.addEventListener('click', (e) => {
             // Untoggle CSS style on the previously selected operator
             untoggleOperator();
             operatorJustPressed = false;
+            equalsJustPressed = false;
         break;
         case 'undo':
-            if (!operatorJustPressed) backspace();
+            if (!operatorJustPressed && !equalsJustPressed) backspace();
         break;
         case 'sign':
             changeSign();
@@ -345,13 +389,4 @@ buttons.addEventListener('click', (e) => {
 
 // --------------- This code is for when 'equals' is entered -------------------
 
-/* let continueEval = true;
-while (continueEval) {
-    
-    evaluate(equation, operatePriority, 'equals');
 
-    // operate until the equation array is simplified
-    if (equation.length === 1) {
-        continueEval = false;
-    };
-}; */
