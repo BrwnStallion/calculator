@@ -181,9 +181,9 @@ addEventListener('DOMContentLoaded', () => {
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Testing ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-const equation = [2, '+', 2, '*', 3, '-'];
+const equation = [];
 
-const operatePriority = [1, 2, 1];
+const operatePriority = [];
 
 const priorityLookup = {
     '*': 2,
@@ -265,6 +265,47 @@ buttons.addEventListener('click', (e) => {
                 appendArray(buttonContent, equation);
                 appendPriorityArray(buttonContent,
                     operatePriority, priorityLookup);
+                
+                // Calculate, if applicable
+                if (equation.length > 3) {
+                    
+                    let priorityDifference = operatePriority[
+                        operatePriority.length - 1]
+                        - operatePriority[operatePriority.length - 2];
+                    
+                    
+                    // Evaluation depends on order of operations
+                    if (priorityDifference > 0) {
+                        
+                        // Do nothing
+                        
+                    } else if (priorityDifference === 0) {
+                        
+
+                        // Same priority; evaluate
+                        evaluate(equation, operatePriority, 'operator');
+                        
+                        // Display total/subtotal
+                        display.textContent = equation[equation.length - 2];
+                        
+
+                    } else if (priorityDifference < 0) {
+                        
+                        // Evaluate everything
+                        let continueEval = true;
+                        while (continueEval) {
+                            
+                            evaluate(equation, operatePriority, 'operator');
+                            
+                            // operate until the equation array is simplified
+                            if (equation.length === 2) continueEval = false;
+                        };
+                        
+                        // Display total
+                        display.textContent = equation[equation.length - 2];
+
+                    };
+                };
             };
         break;
         
@@ -291,47 +332,15 @@ buttons.addEventListener('click', (e) => {
     };
 });
 
-
-let priorityDifference = operatePriority[operatePriority.length - 1] -
-    operatePriority[operatePriority.length - 2];
-
-// Evaluation depends on order of operations
-if (priorityDifference > 0) {
-    
-    // Do nothing
-
-} else if (priorityDifference === 0) {
-    
-    // Same priority; evaluate
-    evaluate(equation, operatePriority, 'operator');
-    
-} else if (priorityDifference < 0) {
-    
-    // Evaluate everything
-    let continueEval = true;
-    while (continueEval) {
-        
-        evaluate(equation, operatePriority, 'operator');
-
-        // operate until the equation array is simplified
-        if (equation.length === 2) {
-            continueEval = false;
-        };
-    };
-    
-};
-
-
 // --------------- This code is for when 'equals' is entered -------------------
-/* 
-let continueEval = true;
-    while (continueEval) {
-        
-        evaluate(equation, operatePriority, 'equals');
 
-        // operate until the equation array is simplified
-        if (equation.length === 1) {
-            continueEval = false;
-        };
+/* let continueEval = true;
+while (continueEval) {
+    
+    evaluate(equation, operatePriority, 'equals');
+
+    // operate until the equation array is simplified
+    if (equation.length === 1) {
+        continueEval = false;
     };
- */
+}; */
