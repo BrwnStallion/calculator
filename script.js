@@ -181,8 +181,77 @@ const equation = [2, '+', 2, '*', 3, '-'];
 
 const operatePriority = [1, 2, 1];
 
+const priorityLookup = {
+    '*': 2,
+    '/': 2,
+    '+': 1,
+    '-': 1,
+};
+
+let operatorJustPressed = true;
 
 // -------------- This code is for when an operator is entered -----------------
+
+const buttons = document.querySelector('#buttons');
+buttons.addEventListener('click', (e) => {
+    let button = e.target.id;
+    let buttonContent = e.target.textContent;
+
+    switch (button) {
+        
+        // Numbers
+        case 'one':
+        case 'two':
+        case 'three':
+        case 'four':
+        case 'five':
+        case 'six':
+        case 'seven':
+        case 'eight':
+        case 'nine':
+            if (operatorJustPressed) {
+                appendDisplay(buttonContent);
+                // operatorJustPressed = false;
+            };
+        break;
+        case 'zero':
+
+        break;
+
+        // Operators
+        case 'divide':
+        case 'multiply':
+        case 'subtract':
+        case 'add':
+            if (!operatorJustPressed) {
+                appendArray(buttonContent, equation);
+                operatorJustPressed = true;
+            };
+        break;
+        
+        // Equals
+        case 'equals':
+
+        break;
+        
+        // Decimal
+        case 'decimal':
+
+        break;
+
+        // Misc
+        case 'clear':
+            clearDisplay();
+            clearAll(equation, operatePriority);
+        break;
+        case 'undo':
+            backspace();
+        break;
+        case 'sign':
+            changeSign();
+        break;
+    };
+});
 
 
 let priorityDifference = operatePriority[operatePriority.length - 1] -
