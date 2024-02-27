@@ -219,9 +219,7 @@ buttons.addEventListener('click', (e) => {
             const display = document.querySelector('#display');
             
             // If first character since operator was pressed, clear display
-            if (operatorJustPressed) {
-                clearDisplay();
-            };
+            if (operatorJustPressed) clearDisplay();
             
             // Don't append decimal if there already is one in the display
             if (button === 'decimal' && display.textContent.includes('.')) {
