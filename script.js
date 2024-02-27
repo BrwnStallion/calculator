@@ -213,6 +213,7 @@ buttons.addEventListener('click', (e) => {
         case 'seven':
         case 'eight':
         case 'nine':
+        case 'zero':
         case 'decimal':
             
             const display = document.querySelector('#display');
@@ -227,13 +228,16 @@ buttons.addEventListener('click', (e) => {
                 break;
             };
             
+            // Don't append zero if it violates math notation rules
+            if (button === 'zero' &&
+                (display.textContent === '-0' || display.textContent === '0')) {
+                break;
+            };
+
             appendDisplay(buttonContent);
             operatorJustPressed = false;
         break;
-        case 'zero':
-
-        break;
-
+        
         // Operators
         case 'divide':
         case 'multiply':
