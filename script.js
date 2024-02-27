@@ -239,10 +239,10 @@ buttons.addEventListener('click', (e) => {
         break;
         
         // Operators
-        case 'divide':
         case 'multiply':
-        case 'subtract':
+        case 'divide':
         case 'add':
+        case 'subtract':
             
             // only button that doesn't reflect the correct operator character
             if (button === 'multiply') {
