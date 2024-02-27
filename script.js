@@ -93,6 +93,15 @@ function appendDisplay(value) {
     };
 }
 
+function untoggleOperator() {
+    // Untoggle CSS style on the previously selected operator
+    if (document.querySelector('.toggled') !== null) {
+        document.querySelector('.toggled')
+            .classList
+            .toggle('toggled');
+    };
+}
+
 function backspace() {
     const display = document.querySelector('#display');
     
@@ -225,7 +234,7 @@ buttons.addEventListener('click', (e) => {
                 clearDisplay();
 
                 // Untoggle CSS style on the previously selected operator
-                document.querySelector('.toggled').classList.toggle('toggled');
+                untoggleOperator();
             };
             
             // Don't append decimal if there already is one in the display
@@ -236,6 +245,8 @@ buttons.addEventListener('click', (e) => {
             // Don't append zero if it violates math notation rules
             if (buttonId === 'zero' &&
                 (display.textContent === '-0' || display.textContent === '0')) {
+                
+                operatorJustPressed = false;
                 break;
             };
 
@@ -320,7 +331,7 @@ buttons.addEventListener('click', (e) => {
             clearAll(equation, operatePriority);
 
             // Untoggle CSS style on the previously selected operator
-            document.querySelector('.toggled').classList.toggle('toggled');
+            untoggleOperator();
             operatorJustPressed = false;
         break;
         case 'undo':
