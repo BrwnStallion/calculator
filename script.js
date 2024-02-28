@@ -187,14 +187,6 @@ function evaluate(equationArr, priorityArr, type = 'operator') {
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Execution ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-// Set default to zero
-addEventListener('DOMContentLoaded', () => {
-    const display = document.querySelector('#display');
-    display.textContent = '0';
-});
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Testing ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 const equation = [];
 
 const operatePriority = [];
@@ -210,7 +202,11 @@ let operatorJustPressed = false;
 let equalsJustPressed = false;
 let errorThrown = false;
 
-// -------------- This code is for when an operator is entered -----------------
+// Set default to zero
+addEventListener('DOMContentLoaded', () => {
+    const display = document.querySelector('#display');
+    display.textContent = '0';
+});
 
 const buttons = document.querySelector('#buttons');
 buttons.addEventListener('click', (e) => {
@@ -402,6 +398,5 @@ buttons.addEventListener('click', (e) => {
     };
 });
 
-// --------------- This code is for when 'equals' is entered -------------------
-
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Testing ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
