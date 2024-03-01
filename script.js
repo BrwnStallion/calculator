@@ -232,7 +232,9 @@ buttons.addEventListener('click', (e) => {
             const display = document.querySelector('#display');
             
             // If error was thrown previously (div/0); same code as 'clear'
-            if (errorThrown) {
+            // If user types a number when a result is displayed, clear the 
+                // previous stuff
+            if (errorThrown || equalsJustPressed) {
 
                 clearDisplay();
                 clearAll(equation, operatePriority);
