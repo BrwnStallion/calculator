@@ -210,10 +210,21 @@ addEventListener('DOMContentLoaded', () => {
 
 const buttons = document.querySelector('#buttons');
 buttons.addEventListener('click', (e) => {
+    
+    // Event information
     let button = e.target;
     let buttonId = e.target.id;
     let buttonContent = e.target.textContent;
-
+    
+    // Display information
+    const display = document.querySelector('#display');
+    let displayLength = display.textContent.length;
+    let displayIsNegative;
+    (display.textContent.charAt(0) === '-')
+        ? displayIsNegative = true 
+        : displayIsNegative = false;
+    
+    
     switch (buttonId) {
         
         // Numbers
@@ -229,8 +240,12 @@ buttons.addEventListener('click', (e) => {
         case 'zero':
         case 'decimal':
             
-            const display = document.querySelector('#display');
-            
+            // Don't allow too many digits
+            if (displayLength > 16 && !operatorJustPressed
+                && !equalsJustPressed) {
+                break;
+            }
+
             // If error was thrown previously (div/0); same code as 'clear'
             // If user types a number when a result is displayed, clear the 
                 // previous stuff
@@ -286,7 +301,6 @@ buttons.addEventListener('click', (e) => {
                 
                 
                 operatorJustPressed = true;
-                const display = document.querySelector('#display');
                 
                 
                 // Show selected operator as toggled using CSS
@@ -359,7 +373,6 @@ buttons.addEventListener('click', (e) => {
                     && equation.length > 1) {
                 
                 // Append display number to equation array
-                const display = document.querySelector('#display');
                 appendArray(display.textContent, equation);
 
                 let continueEval = true;
@@ -395,7 +408,14 @@ buttons.addEventListener('click', (e) => {
             if (!operatorJustPressed && !equalsJustPressed) backspace();
         break;
         case 'sign':
-            if (!equalsJustPressed) changeSign();
+            
+            // Only allow sign change if:
+                // 1. equals wasn't just pressed (not displaying a result)
+                // 2. (number is negative)
+                    // OR (number isn't max char and positive)
+            if (!equalsJustPressed && 
+                (displayIsNegative ||
+                    (displayLength < 17 && !displayIsNegative))) changeSign();
         break;
     };
 });
