@@ -39,7 +39,7 @@ body {
     flex-grow: 1;
     min-width: 100%;
     /* Temporary styles */
-    background-color: black;
+    background-color: rgb(185, 166, 137);
 }
 
 #calculator {
@@ -49,7 +49,7 @@ body {
     flex-direction: column;
     row-gap: 5px;
     /* Temporary styles */
-    background-color: rgb(122, 9, 9);
+    /* background-color: rgb(122, 9, 9); */
 }
 
 #display {
@@ -61,9 +61,10 @@ body {
     align-items: center;
     padding: 5px 20px 5px 20px;
     font-size: 26px;
-    color: white;
+    color: black;
+    background-color: rgb(221, 193, 156);
     /* Temporary styles */
-    border: 1px solid yellow;
+    border: 1px solid black;
 }
 
 #buttons {
@@ -87,17 +88,17 @@ body {
     /* Center btn text vertically */
     align-items: center;
     color: white;
-    background-color: black;
+    background-color: rgb(129, 102, 77);
     font-size: 24px;
 }
 
 #buttons .operator {
-    background-color: rgb(100, 100, 100);
+    background-color: rgb(73, 100, 65);
     color: white;
 }
 
 #buttons .toggled {
-    background-color: white;
+    background-color: rgb(200, 200, 200);
     color: black;
 }
 
@@ -117,11 +118,11 @@ body {
 }
 
 #row-1 #zero {
-    min-width: 48%;
+    min-width: 49%;
 }
 
 #row-1 #decimal,
 #row-1 #equals {
     /* 1/4 of available space (gap) */
-    min-width: 24%;
+    min-width: 23.5%;
 }
