@@ -48,23 +48,47 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 function add(a, b) {
-    return +a + +b;
+    return manageResultLength(+a + +b);
 }
 
 function subtract(a, b) {
-    return +a - +b;
+    return manageResultLength(+a - +b);
 }
 
 function multiply(a, b) {
-    return +a * +b;
+    return manageResultLength(+a * +b);
 }
 
 function divide(a, b) {
     if (+b !== 0) {
-        return +a / +b;
+        return manageResultLength(+a / +b);
     } else {
         errorThrown = true;
         return 'don\'t do that';
+    };
+}
+
+function manageResultLength(result) {
+    // Split string result at decimal, get length of nums after decimal
+    let decimalPlaces;
+    if (!Number.isInteger(result)) {
+        decimalPlaces = result.toString().split('.')[1].length;
+    };
+
+    // Remove decimal place from result; get length
+    let numberSize = Math.trunc(result).toString().length;
+
+    // Only need to deal with numbers that are too large
+        // numberSize is too large => exponential form, 10 places
+        // decimalPlaces is too large
+            // trailing decimals => round to: 15 - numberSize
+            // exponentially small decimals => exponential form, 10 places
+    if (numberSize > 16 || Math.abs(result) < 1/1000000) { // really big/small
+        return result.toExponential(10);
+    } else if (numberSize + decimalPlaces > 15) { // too many trailing decimals
+        return result.toFixed(15 - numberSize);
+    } else { // everything else
+        return result;
     };
 }
 
