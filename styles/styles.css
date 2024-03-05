@@ -11,18 +11,8 @@ html {
 }
 
 @font-face {
-    font-family: anonymouspro-bold;
-    src: url(anonymouspro/AnonymousPro-Bold.ttf);
-}
-
-@font-face {
     font-family: anonymouspro;
     src: url(anonymouspro/AnonymousPro-Regular.ttf);
-}
-
-@font-face {
-    font-family: alata;
-    src: url(alata/Alata-Regular.ttf);
 }
 
 body,
