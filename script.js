@@ -83,7 +83,8 @@ function manageResultLength(result) {
         // decimalPlaces is too large
             // trailing decimals => round to: 15 - numberSize
             // exponentially small decimals => exponential form, 10 places
-    if (numberSize > 16 || Math.abs(result) < 1/1000000) { // really big/small
+    if (numberSize > 16 || Math.abs(result) < 1/1000000
+        && result !== 0) { // really big/small (but not zero)
         return result.toExponential(10);
     } else if (numberSize + decimalPlaces > 15) { // too many trailing decimals
         return result.toFixed(15 - numberSize);
