@@ -211,6 +211,8 @@ function evaluate(equationArr, priorityArr, type = 'operator') {
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Execution ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+
+// Global variable declations
 const equation = [];
 
 const operatePriority = [];
@@ -226,12 +228,15 @@ let operatorJustPressed = false;
 let equalsJustPressed = false;
 let errorThrown = false;
 
-// Set default to zero
+
+// Set display default to zero
 addEventListener('DOMContentLoaded', () => {
     const display = document.querySelector('#display');
     display.textContent = '0';
 });
 
+
+// Event listener to handle the calculator operation when buttons are clicked
 const buttons = document.querySelector('#buttons');
 buttons.addEventListener('click', (e) => {
     
@@ -442,6 +447,99 @@ buttons.addEventListener('click', (e) => {
                     (displayLength < 17 && !displayIsNegative))) changeSign();
         break;
     };
+});
+
+
+// Event listener to translate keyboard to clicks on the appropriate buttons
+document.addEventListener('keydown', (e) => {
+
+    let buttonId;
+    let validKeyPressed;
+
+    // Process keyboard to simulated click location
+    switch (e.key) {
+        case '1':
+            buttonId = '#one';
+            validKeyPressed = true;
+        break;
+        case '2':
+            buttonId = '#two';
+            validKeyPressed = true;
+        break;
+        case '3':
+            buttonId = '#three';
+            validKeyPressed = true;
+        break;
+        case '4':
+            buttonId = '#four';
+            validKeyPressed = true;
+        break;
+        case '5':
+            buttonId = '#five';
+            validKeyPressed = true;
+        break;
+        case '6':
+            buttonId = '#six';
+            validKeyPressed = true;
+        break;
+        case '7':
+            buttonId = '#seven';
+            validKeyPressed = true;
+        break;
+        case '8':
+            buttonId = '#eight';
+            validKeyPressed = true;
+        break;
+        case '9':
+            buttonId = '#nine';
+            validKeyPressed = true;
+        break;
+        case '0':
+            buttonId = '#zero';
+            validKeyPressed = true;
+        break;
+        case '.':
+            buttonId = '#decimal';
+            validKeyPressed = true;
+        break;
+        case '*':
+            buttonId = '#multiply';
+            validKeyPressed = true;
+        break;
+        case '/':
+            buttonId = '#divide';
+            validKeyPressed = true;
+        break;
+        case '+':
+            buttonId = '#add';
+            validKeyPressed = true;
+        break;
+        case '-':
+            buttonId = '#subtract';
+            validKeyPressed = true;
+        break;
+        case '=':
+        case 'Enter':
+            buttonId = '#equals';
+            validKeyPressed = true;
+        break;
+        case 'Backspace':
+            buttonId = '#undo';
+            validKeyPressed = true;
+        break;
+        case 'Delete':
+            buttonId = '#clear';
+            validKeyPressed = true;
+        break;
+    };
+
+    // Dispatch click event
+    if (validKeyPressed) {
+        let simClickElement = document.querySelector(buttonId);
+        let simClickEvent = new MouseEvent('click', {bubbles: true});
+        simClickElement.dispatchEvent(simClickEvent);
+    };
+
 });
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Testing ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
