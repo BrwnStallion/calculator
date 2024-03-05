@@ -10,6 +10,21 @@ html {
     box-sizing: inherit;
 }
 
+@font-face {
+    font-family: anonymouspro-bold;
+    src: url(anonymouspro/AnonymousPro-Bold.ttf);
+}
+
+@font-face {
+    font-family: anonymouspro;
+    src: url(anonymouspro/AnonymousPro-Regular.ttf);
+}
+
+@font-face {
+    font-family: alata;
+    src: url(alata/Alata-Regular.ttf);
+}
+
 body,
 html {
     height: 100vh;
@@ -48,8 +63,6 @@ body {
     display: flex;
     flex-direction: column;
     row-gap: 5px;
-    /* Temporary styles */
-    /* background-color: rgb(122, 9, 9); */
 }
 
 #display {
@@ -61,6 +74,7 @@ body {
     align-items: center;
     padding: 5px 20px 5px 20px;
     font-size: 26px;
+    font-family: anonymouspro;
     color: black;
     background-color: rgb(221, 193, 156);
     /* Temporary styles */
@@ -90,6 +104,7 @@ body {
     color: white;
     background-color: rgb(129, 102, 77);
     font-size: 24px;
+    font-family: anonymouspro;
 }
 
 #buttons .operator {
