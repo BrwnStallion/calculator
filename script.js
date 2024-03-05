@@ -531,6 +531,10 @@ document.addEventListener('keydown', (e) => {
             buttonId = '#clear';
             validKeyPressed = true;
         break;
+        case '_':
+            buttonId = '#sign';
+            validKeyPressed = true;
+        break;
     };
 
     // Dispatch click event
