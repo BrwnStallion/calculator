@@ -15,6 +15,11 @@ html {
     src: url(anonymouspro/AnonymousPro-Regular.ttf);
 }
 
+@font-face {
+    font-family: anonymouspro-bold;
+    src: url(anonymouspro/AnonymousPro-Bold.ttf);
+}
+
 body,
 html {
     height: 100vh;
@@ -32,8 +37,10 @@ body {
     width: 100%;
     display: flex;
     justify-content: center;
-    /* Temporary styles */
-    background-color: black;
+    padding: 5px 0px 5px 0px;
+    font-family: anonymouspro-bold;
+    font-size: 26px;
+    background-color: rgb(185, 166, 137);
     color: white;
 }
 
@@ -43,7 +50,6 @@ body {
     align-items: center;
     flex-grow: 1;
     min-width: 100%;
-    /* Temporary styles */
     background-color: rgb(185, 166, 137);
 }
 
