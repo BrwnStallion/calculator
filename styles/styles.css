@@ -124,10 +124,7 @@ body {
     font-size: 20px;
 }
 
-#row-5 #clear,
-#row-5 #undo,
-#row-5 #sign,
-#row-5 #divide,
+#row-5 button,
 #row-4 button,
 #row-3 button, 
 #row-2 button {
